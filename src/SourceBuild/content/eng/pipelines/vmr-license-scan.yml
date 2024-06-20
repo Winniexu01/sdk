@@ -1,16 +1,22 @@
 # Pipeline documentation at https://github.com/dotnet/dotnet/blob/main/docs/license-scanning.md
 
-schedules:
-- cron: "0 7 * * 1"
-  displayName: Run on Mondays at 7am UTC
+# schedules:
+# - cron: "0 7 * * 1"
+#   displayName: Run on Mondays at 7am UTC
+#   branches:
+#     include:
+#     - main
+#     - release/*.0.1xx*
+#     - internal/release/*.0.1xx*
+
+pr: none
+trigger:
+  batch: true
   branches:
     include:
     - main
     - release/*.0.1xx*
     - internal/release/*.0.1xx*
-
-pr: none
-trigger: none
 
 parameters:
 # Provides a way to scan a specific repo. If not provided, all repos of the VMR will be scanned.
